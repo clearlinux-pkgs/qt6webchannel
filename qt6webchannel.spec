@@ -4,19 +4,17 @@
 # Using build pattern: cmake
 #
 Name     : qt6webchannel
-Version  : 6.5.3
-Release  : 1
-URL      : https://download.qt.io/official_releases/qt/6.5/6.5.3/submodules/qtwebchannel-everywhere-src-6.5.3.tar.xz
-Source0  : https://download.qt.io/official_releases/qt/6.5/6.5.3/submodules/qtwebchannel-everywhere-src-6.5.3.tar.xz
+Version  : 6.6.0
+Release  : 2
+URL      : https://download.qt.io/official_releases/qt/6.6/6.6.0/submodules/qtwebchannel-everywhere-src-6.6.0.tar.xz
+Source0  : https://download.qt.io/official_releases/qt/6.6/6.6.0/submodules/qtwebchannel-everywhere-src-6.6.0.tar.xz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.3 GPL-2.0 GPL-3.0 LGPL-3.0
 Requires: qt6webchannel-lib = %{version}-%{release}
 Requires: qt6webchannel-license = %{version}-%{release}
 BuildRequires : buildreq-cmake
-BuildRequires : mesa-dev
 BuildRequires : qt6base-dev
-BuildRequires : qt6declarative-dev
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
@@ -54,15 +52,15 @@ license components for the qt6webchannel package.
 
 
 %prep
-%setup -q -n qtwebchannel-everywhere-src-6.5.3
-cd %{_builddir}/qtwebchannel-everywhere-src-6.5.3
+%setup -q -n qtwebchannel-everywhere-src-6.6.0
+cd %{_builddir}/qtwebchannel-everywhere-src-6.6.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1696370287
+export SOURCE_DATE_EPOCH=1697156511
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -98,7 +96,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1696370287
+export SOURCE_DATE_EPOCH=1697156511
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/qt6webchannel
 cp %{_builddir}/qtwebchannel-everywhere-src-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/qt6webchannel/b073f11f0c81a95ab5e32aa6b5d23a5955a95274 || :
@@ -116,34 +114,23 @@ popd
 /usr/lib64/qt6/mkspecs/modules/qt_lib_webchannel.pri
 /usr/lib64/qt6/mkspecs/modules/qt_lib_webchannel_private.pri
 /usr/lib64/qt6/modules/WebChannel.json
-/usr/lib64/qt6/qml/QtWebChannel/plugins.qmltypes
-/usr/lib64/qt6/qml/QtWebChannel/qmldir
 
 %files dev
 %defattr(-,root,root,-)
-/usr/include/QtWebChannel/6.5.3/QtWebChannel/private/qmetaobjectpublisher_p.h
-/usr/include/QtWebChannel/6.5.3/QtWebChannel/private/qqmlwebchannelattached_p.h
-/usr/include/QtWebChannel/6.5.3/QtWebChannel/private/qwebchannel_p.h
-/usr/include/QtWebChannel/6.5.3/QtWebChannel/private/signalhandler_p.h
-/usr/include/QtWebChannel/QQmlWebChannel
+/usr/include/QtWebChannel/6.6.0/QtWebChannel/private/qmetaobjectpublisher_p.h
+/usr/include/QtWebChannel/6.6.0/QtWebChannel/private/qwebchannel_p.h
+/usr/include/QtWebChannel/6.6.0/QtWebChannel/private/signalhandler_p.h
 /usr/include/QtWebChannel/QWebChannel
 /usr/include/QtWebChannel/QWebChannelAbstractTransport
 /usr/include/QtWebChannel/QtWebChannel
 /usr/include/QtWebChannel/QtWebChannelDepends
 /usr/include/QtWebChannel/QtWebChannelVersion
-/usr/include/QtWebChannel/qqmlwebchannel.h
 /usr/include/QtWebChannel/qtwebchannelexports.h
 /usr/include/QtWebChannel/qtwebchannelversion.h
 /usr/include/QtWebChannel/qwebchannel.h
 /usr/include/QtWebChannel/qwebchannelabstracttransport.h
 /usr/include/QtWebChannel/qwebchannelglobal.h
 /usr/lib64/cmake/Qt6BuildInternals/StandaloneTests/QtWebChannelTestsConfig.cmake
-/usr/lib64/cmake/Qt6Qml/QmlPlugins/Qt6webchannelAdditionalTargetInfo.cmake
-/usr/lib64/cmake/Qt6Qml/QmlPlugins/Qt6webchannelConfig.cmake
-/usr/lib64/cmake/Qt6Qml/QmlPlugins/Qt6webchannelConfigVersion.cmake
-/usr/lib64/cmake/Qt6Qml/QmlPlugins/Qt6webchannelConfigVersionImpl.cmake
-/usr/lib64/cmake/Qt6Qml/QmlPlugins/Qt6webchannelTargets-relwithdebinfo.cmake
-/usr/lib64/cmake/Qt6Qml/QmlPlugins/Qt6webchannelTargets.cmake
 /usr/lib64/cmake/Qt6WebChannel/Qt6WebChannelAdditionalTargetInfo.cmake
 /usr/lib64/cmake/Qt6WebChannel/Qt6WebChannelConfig.cmake
 /usr/lib64/cmake/Qt6WebChannel/Qt6WebChannelConfigVersion.cmake
@@ -159,8 +146,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libQt6WebChannel.so.6
-/usr/lib64/libQt6WebChannel.so.6.5.3
-/usr/lib64/qt6/qml/QtWebChannel/libwebchannelplugin.so
+/usr/lib64/libQt6WebChannel.so.6.6.0
 
 %files license
 %defattr(0644,root,root,0755)
