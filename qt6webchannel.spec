@@ -7,7 +7,7 @@
 #
 Name     : qt6webchannel
 Version  : 6.6.1
-Release  : 5
+Release  : 4
 URL      : https://download.qt.io/official_releases/qt/6.6/6.6.1/submodules/qtwebchannel-everywhere-src-6.6.1.tar.xz
 Source0  : https://download.qt.io/official_releases/qt/6.6/6.6.1/submodules/qtwebchannel-everywhere-src-6.6.1.tar.xz
 Summary  : No detailed summary available
@@ -16,6 +16,7 @@ License  : BSD-3-Clause GFDL-1.3 GPL-2.0 GPL-3.0 LGPL-3.0
 Requires: qt6webchannel-lib = %{version}-%{release}
 Requires: qt6webchannel-license = %{version}-%{release}
 BuildRequires : buildreq-cmake
+BuildRequires : mesa-dev
 BuildRequires : qt6base-dev
 BuildRequires : qt6declarative-dev
 # Suppress stripping binaries
@@ -63,7 +64,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1703012644
+export SOURCE_DATE_EPOCH=1703013011
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -99,7 +100,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1703012644
+export SOURCE_DATE_EPOCH=1703013011
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/qt6webchannel
 cp %{_builddir}/qtwebchannel-everywhere-src-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/qt6webchannel/b073f11f0c81a95ab5e32aa6b5d23a5955a95274 || :
@@ -114,9 +115,15 @@ popd
 %files
 %defattr(-,root,root,-)
 /usr/lib64/qt6/metatypes/qt6webchannel_relwithdebinfo_metatypes.json
+/usr/lib64/qt6/metatypes/qt6webchannelquick_relwithdebinfo_metatypes.json
 /usr/lib64/qt6/mkspecs/modules/qt_lib_webchannel.pri
 /usr/lib64/qt6/mkspecs/modules/qt_lib_webchannel_private.pri
+/usr/lib64/qt6/mkspecs/modules/qt_lib_webchannelquick.pri
+/usr/lib64/qt6/mkspecs/modules/qt_lib_webchannelquick_private.pri
 /usr/lib64/qt6/modules/WebChannel.json
+/usr/lib64/qt6/modules/WebChannelQuick.json
+/usr/lib64/qt6/qml/QtWebChannel/plugins.qmltypes
+/usr/lib64/qt6/qml/QtWebChannel/qmldir
 
 %files dev
 %defattr(-,root,root,-)
@@ -133,7 +140,22 @@ popd
 /usr/include/QtWebChannel/qwebchannel.h
 /usr/include/QtWebChannel/qwebchannelabstracttransport.h
 /usr/include/QtWebChannel/qwebchannelglobal.h
+/usr/include/QtWebChannelQuick/6.6.1/QtWebChannelQuick/private/qqmlwebchannelattached_p.h
+/usr/include/QtWebChannelQuick/QQmlWebChannel
+/usr/include/QtWebChannelQuick/QtWebChannelQuick
+/usr/include/QtWebChannelQuick/QtWebChannelQuickDepends
+/usr/include/QtWebChannelQuick/QtWebChannelQuickVersion
+/usr/include/QtWebChannelQuick/qqmlwebchannel.h
+/usr/include/QtWebChannelQuick/qtwebchannelquickexports.h
+/usr/include/QtWebChannelQuick/qtwebchannelquickversion.h
+/usr/include/QtWebChannelQuick/qwebchannelquickglobal.h
 /usr/lib64/cmake/Qt6BuildInternals/StandaloneTests/QtWebChannelTestsConfig.cmake
+/usr/lib64/cmake/Qt6Qml/QmlPlugins/Qt6WebChannelQuickpluginAdditionalTargetInfo.cmake
+/usr/lib64/cmake/Qt6Qml/QmlPlugins/Qt6WebChannelQuickpluginConfig.cmake
+/usr/lib64/cmake/Qt6Qml/QmlPlugins/Qt6WebChannelQuickpluginConfigVersion.cmake
+/usr/lib64/cmake/Qt6Qml/QmlPlugins/Qt6WebChannelQuickpluginConfigVersionImpl.cmake
+/usr/lib64/cmake/Qt6Qml/QmlPlugins/Qt6WebChannelQuickpluginTargets-relwithdebinfo.cmake
+/usr/lib64/cmake/Qt6Qml/QmlPlugins/Qt6WebChannelQuickpluginTargets.cmake
 /usr/lib64/cmake/Qt6WebChannel/Qt6WebChannelAdditionalTargetInfo.cmake
 /usr/lib64/cmake/Qt6WebChannel/Qt6WebChannelConfig.cmake
 /usr/lib64/cmake/Qt6WebChannel/Qt6WebChannelConfigVersion.cmake
@@ -142,14 +164,28 @@ popd
 /usr/lib64/cmake/Qt6WebChannel/Qt6WebChannelTargets-relwithdebinfo.cmake
 /usr/lib64/cmake/Qt6WebChannel/Qt6WebChannelTargets.cmake
 /usr/lib64/cmake/Qt6WebChannel/Qt6WebChannelVersionlessTargets.cmake
+/usr/lib64/cmake/Qt6WebChannelQuick/Qt6WebChannelQuickAdditionalTargetInfo.cmake
+/usr/lib64/cmake/Qt6WebChannelQuick/Qt6WebChannelQuickConfig.cmake
+/usr/lib64/cmake/Qt6WebChannelQuick/Qt6WebChannelQuickConfigVersion.cmake
+/usr/lib64/cmake/Qt6WebChannelQuick/Qt6WebChannelQuickConfigVersionImpl.cmake
+/usr/lib64/cmake/Qt6WebChannelQuick/Qt6WebChannelQuickDependencies.cmake
+/usr/lib64/cmake/Qt6WebChannelQuick/Qt6WebChannelQuickTargets-relwithdebinfo.cmake
+/usr/lib64/cmake/Qt6WebChannelQuick/Qt6WebChannelQuickTargets.cmake
+/usr/lib64/cmake/Qt6WebChannelQuick/Qt6WebChannelQuickVersionlessTargets.cmake
 /usr/lib64/libQt6WebChannel.prl
 /usr/lib64/libQt6WebChannel.so
+/usr/lib64/libQt6WebChannelQuick.prl
+/usr/lib64/libQt6WebChannelQuick.so
 /usr/lib64/pkgconfig/Qt6WebChannel.pc
+/usr/lib64/pkgconfig/Qt6WebChannelQuick.pc
 
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libQt6WebChannel.so.6
 /usr/lib64/libQt6WebChannel.so.6.6.1
+/usr/lib64/libQt6WebChannelQuick.so.6
+/usr/lib64/libQt6WebChannelQuick.so.6.6.1
+/usr/lib64/qt6/qml/QtWebChannel/libwebchannelquickplugin.so
 
 %files license
 %defattr(0644,root,root,0755)
